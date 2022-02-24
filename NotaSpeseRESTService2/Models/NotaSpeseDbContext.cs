@@ -9,6 +9,6 @@ namespace NotaSpeseRESTService2.Models
         {
         }
 
-        public DbSet<NotaSpese> TodoItems { get; set; } = null!;
+        public DbSet<NotaSpese> NotaSpeses { get; set; } = null!;
     }
 }

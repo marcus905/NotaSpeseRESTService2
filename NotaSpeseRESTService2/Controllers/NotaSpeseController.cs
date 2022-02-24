@@ -24,16 +24,16 @@ namespace NotaSpeseRESTService2.Controllers
 
         // GET: api/NotaSpese
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<NotaSpese>>> GetTodoItems()
+        public async Task<ActionResult<IEnumerable<NotaSpese>>> GetNotaSpeses()
         {
-            return await _context.TodoItems.ToListAsync();
+            return await _context.NotaSpeses.ToListAsync();
         }
 
         // GET: api/NotaSpese/5
         [HttpGet("{id}")]
         public async Task<ActionResult<NotaSpese>> GetNotaSpese(long id)
         {
-            var notaSpese = await _context.TodoItems.FindAsync(id);
+            var notaSpese = await _context.NotaSpeses.FindAsync(id);
 
             if (notaSpese == null)
             {
@@ -79,7 +79,7 @@ namespace NotaSpeseRESTService2.Controllers
         [HttpPost]
         public async Task<ActionResult<NotaSpese>> PostNotaSpese(NotaSpese notaSpese)
         {
-            _context.TodoItems.Add(notaSpese);
+            _context.NotaSpeses.Add(notaSpese);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetNotaSpese", new { id = notaSpese.Id }, notaSpese);
@@ -89,13 +89,13 @@ namespace NotaSpeseRESTService2.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteNotaSpese(long id)
         {
-            var notaSpese = await _context.TodoItems.FindAsync(id);
+            var notaSpese = await _context.NotaSpeses.FindAsync(id);
             if (notaSpese == null)
             {
                 return NotFound();
             }
 
-            _context.TodoItems.Remove(notaSpese);
+            _context.NotaSpeses.Remove(notaSpese);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -103,7 +103,7 @@ namespace NotaSpeseRESTService2.Controllers
 
         private bool NotaSpeseExists(long id)
         {
-            return _context.TodoItems.Any(e => e.Id == id);
+            return _context.NotaSpeses.Any(e => e.Id == id);
         }
     }
 }
